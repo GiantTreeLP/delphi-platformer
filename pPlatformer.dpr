@@ -3,9 +3,9 @@ program pPlatformer;
 uses
   Vcl.Forms,
   System.SysUtils,
-  mMain in 'mMain.pas' {FormMain},
-  dglOpenGL in 'dglOpenGL.pas',
-  m3DObjects in 'm3DObjects.pas';
+  mMain in 'src\mMain.pas' {FormMain} ,
+  dglOpenGL in 'src\dglOpenGL.pas',
+  m3DObjects in 'src\m3DObjects.pas';
 
 {$R *.res}
 
