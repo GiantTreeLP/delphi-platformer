@@ -16,6 +16,7 @@ object FormMain: TFormMain
   WindowState = wsMaximized
   OnCreate = FormCreate
   OnKeyUp = FormKeyUp
+  OnMouseWheel = FormMouseWheel
   PixelsPerInch = 96
   TextHeight = 13
 end

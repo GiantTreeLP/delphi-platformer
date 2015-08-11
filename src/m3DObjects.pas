@@ -10,6 +10,7 @@ type
   TCustomVector3d = class(TObject)
     X, Y, Z: Double;
     constructor Create(X, Y, Z: Double);
+    function DistanceTo(X, Y, Z: Double): Double;
   end;
 
   TCustomColor4d = class(TObject)
@@ -23,7 +24,9 @@ type
     FColor: TCustomColor4d;
     constructor Create; overload;
     constructor Create(X, Y, Z, Width, Height, Depth, Rx, Ry, Rz, R, G, B, A: Double); overload;
-    procedure Render; virtual;
+
+    procedure FreeInstance; override;
+    procedure Render; virtual; abstract;
     // Position
     procedure SetPosition(X, Y, Z: Double); overload;
     procedure SetPosition(Vector: TCustomVector3d); overload;
@@ -114,6 +117,11 @@ constructor TCustomVector3d.Create(X, Y, Z: Double);
     Self.Z := Z;
   end;
 
+function TCustomVector3d.DistanceTo(X, Y, Z: Double): Double;
+  begin
+    Result := Sqrt(Sqr(X - Self.X) + Sqr(Y - Self.Y) + Sqr(Z - Self.Z));
+  end;
+
 // TCustomColor4d
 constructor TCustomColor4d.Create(R, G, B, A: Double);
   begin
@@ -144,9 +152,12 @@ constructor TCustomObject3d.Create(X, Y, Z, Width, Height, Depth, Rx, Ry, Rz, R,
     SetColor(R, G, B, A);
   end;
 
-procedure TCustomObject3d.Render;
+procedure TCustomObject3d.FreeInstance;
   begin
-
+    FPosition.FreeInstance;
+    FRotation.FreeInstance;
+    FColor.FreeInstance;
+    inherited FreeInstance;
   end;
 
 procedure TCustomObject3d.SetPosition(Vector: TCustomVector3d);
@@ -311,6 +322,8 @@ procedure TTriangle3d.Render;
 
 // TCube3d
 procedure TCube3d.Render;
+  var
+    S: Single;
   begin
     glPushMatrix;
     glRotated(Rotation.X, 1, 0, 0);
@@ -320,6 +333,8 @@ procedure TCube3d.Render;
     glBegin(GL_QUADS);
     begin
       glColor4d(Color.R, Color.G, Color.B, Color.A);
+      S := 127;
+      glMaterialiv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, @S);
 
       // Top
       glVertex3d(0, Height, 0);
