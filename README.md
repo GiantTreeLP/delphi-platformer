@@ -3,18 +3,20 @@ Mein erster Versuch mit OpenGL zu arbeiten.
 Aktuell befindet sich das Projekt noch sehr am Anfang, der Kern steht allerdings schon.
 
 Steuerung: 
-    W                   Vorwärts
-    S                   Zurück
+```
+    W                   VorwÃ¤rts
+    S                   ZurÃ¼ck
     A                   Links
     D                   Rechts
     Leertaste           Nach oben
     Shift               Nach unten
     Strg                OpenSimplexnoise-Vorschau umschalten (3D Rauschfunktion) https://de.wikipedia.org/wiki/Simplex_Noise
-    Linke-Pfeiltaste    Rauschempfindlichkeit erhöhen (mehr Blöcke)
-    Rechte-Pfeiltaste   Rauschempfindlichkeit verringern (weniger Blöcke)
-    Numpad+             Vorgenerierte "Landschaft" vergrößern
+    Linke-Pfeiltaste    Rauschempfindlichkeit erhÃ¶hen (mehr BlÃ¶cke)
+    Rechte-Pfeiltaste   Rauschempfindlichkeit verringern (weniger BlÃ¶cke)
+    Numpad+             Vorgenerierte "Landschaft" vergrÃ¶ÃŸern
     Numpad-             Vorgenerierte "Landschaft" verkleinern
     Rechte Maustaste    Teleportiert den Nutzer an die Koordinaten 0,20,0
-    Mausrad             Geschwindigkeit erhöhen/verringern
+    Mausrad             Geschwindigkeit erhÃ¶hen/verringern
     Maus                Umsehen
     Esc                 Programm beenden
+```
